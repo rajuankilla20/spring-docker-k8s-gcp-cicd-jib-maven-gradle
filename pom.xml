@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>rajuankilla20</groupId>
+	<artifactId>spring-doker-k8s-gcp-cicd-jib-maven-gradle</artifactId>
+ 
+	<version>1.0.0-RELEASE</version>
+	<name>spring-docker-k8s-gcp-cicd-jib-maven-gradle</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:alpine</image>
+					</from>
+					<to>
+						<image>hub.docker.com/${project.groupId}/${project.artifactId}</image>
+					</to>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-Dmy.property=example.value</jvmFlag>
+							<jvmFlag>-Xms512m</jvmFlag>
+							<jvmFlag>-Xdebug</jvmFlag>
+						</jvmFlags>
+						<mainClass>com.rankilla20.springdocker.SpringDockerApplication</mainClass>
+						<ports>
+							<port>8080</port>
+						</ports>
+						<format>OCI</format>
+					</container>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
