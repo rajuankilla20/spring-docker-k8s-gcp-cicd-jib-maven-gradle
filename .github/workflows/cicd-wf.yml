@@ -32,7 +32,7 @@ jobs:
     - name: Set repository name
       run: echo ::set-env name=REPOSITORY_NAME::${GITHUB_REPOSITORY#*/}-${GITHUB_SHA:0:7}
     - name: Print repo name
-      run: echo "Repository name is $REPOSITORY_NAME
+      run: echo "Repository name is $REPOSITORY_NAME"
     - name: Login to  DockerHub
       uses: docker/login-action@v1
       with:
