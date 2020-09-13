@@ -39,5 +39,5 @@ jobs:
       with:
         username: ${{ secrets.MY_DOCKER_HUB_USERNAME }}
         password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
-    - name: Check images
-      run: docker images
+    - name: Push images to registry
+      run: mvn compile jib:dockerBuild --image=$REPOSITORY_NAME:$BUILD_NUMBER
