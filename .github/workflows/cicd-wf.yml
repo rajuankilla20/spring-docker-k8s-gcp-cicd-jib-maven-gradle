@@ -36,7 +36,7 @@ jobs:
     - name: Login to  DockerHub
       uses: docker/login-action@v1
       with:
-        username: $ {{secrets.MY_DOCKER_HUB_USERNAME}}
-        password: ${{secrets.MY_DOCKER_HUB_TOKEN}}
+        username: ${{ secrets.MY_DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
     - name: Check images
       run: docker images
