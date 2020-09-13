@@ -1,6 +1,6 @@
 # Read Me First
 The following was discovered as part of building this project:
-# Test 2
+# Test 3
 * The original package name 'com.rankilla.spring-docker' is invalid and this project uses 'com.rankilla.springdocker' instead.
 
 # Getting Started
