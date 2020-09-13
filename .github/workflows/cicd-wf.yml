@@ -40,4 +40,4 @@ jobs:
         username: ${{ secrets.MY_DOCKER_HUB_USERNAME }}
         password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
     - name: Push images to registry
-      run: mvn compile jib:dockerBuild --image=$REPOSITORY_NAME:$BUILD_NUMBER
+      run: mvn compile com.google.cloud.tools:jib-maven-plugin:2.5.2:build -Dimage=$REPOSITORY_NAME:$BUILD_NUMBER

@@ -45,7 +45,7 @@
 		<!-- testing -->
 	<build>
 		<plugins>
-			<plugin>
+		<!--	<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>1.3.0</version>
@@ -70,6 +70,7 @@
 					</container>
 				</configuration>
 			</plugin>
+-->
 		</plugins>
 	</build>
 </project>
