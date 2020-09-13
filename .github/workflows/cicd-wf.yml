@@ -1,6 +1,4 @@
 name: Spring-Docker Release workflow
-env:
-    appName: ';
 on:
   pull_request:
     branches: master
