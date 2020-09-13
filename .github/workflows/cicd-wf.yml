@@ -41,3 +41,4 @@ jobs:
         password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
     - name: Push images to registry
       run: mvn compile com.google.cloud.tools:jib-maven-plugin:2.5.2:build -Dimage=registry.hub.docker.com/rajuankilla20/$REPOSITORY_NAME:$REPOSITORY_NAME-b$BUILD_NUMBER
+## It will generate by default, which is similar to Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.rankilla20.springdocker.SpringDockerApplication]      
