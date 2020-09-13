@@ -30,7 +30,7 @@ jobs:
     - name: Print new build number
       run: echo "Build number is $BUILD_NUMBER"
     - name: Set repository name
-      run: echo ::set-env name=REPOSITORY_NAME::b${GITHUB_REPOSITORY#*/}
+      run: echo ::set-env name=REPOSITORY_NAME::${GITHUB_REPOSITORY#*/}
 ##      run: echo ::set-env name=REPOSITORY_NAME::${GITHUB_REPOSITORY#*/}-${GITHUB_SHA:0:7}
     - name: Print repo name
       run: echo "Repository name is $REPOSITORY_NAME"
@@ -40,4 +40,4 @@ jobs:
         username: ${{ secrets.MY_DOCKER_HUB_USERNAME }}
         password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
     - name: Push images to registry
-      run: mvn compile com.google.cloud.tools:jib-maven-plugin:2.5.2:build -Dimage=registry.hub.docker.com/rajuankilla20/$REPOSITORY_NAME:$REPOSITORY_NAME-$BUILD_NUMBER
+      run: mvn compile com.google.cloud.tools:jib-maven-plugin:2.5.2:build -Dimage=registry.hub.docker.com/rajuankilla20/$REPOSITORY_NAME:$REPOSITORY_NAME-b$BUILD_NUMBER
