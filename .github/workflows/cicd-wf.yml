@@ -14,31 +14,20 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Configure git
-      run: |
-        git config --global committer.email "raju.ankilla@gmail.com"
-        git config --global committer.name "Raji Ankilla"
-        git config --global author.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        git config --global author.name "${GITHUB_ACTOR}"
-    - name: Checkout master branch
-      run: git checkout master
-    - name: Generate build number 
-      id: buildnumber
-      uses: einaregilsson/build-number@v2
-      with:
-        token: ${{ secrets.MY_GITHUB_TOKEN }} 
-    - name: Print new build number
-      run: echo "Build number is $BUILD_NUMBER"
-    - name: Set repository name
-      run: echo ::set-env name=REPOSITORY_NAME::${GITHUB_REPOSITORY#*/}
-##      run: echo ::set-env name=REPOSITORY_NAME::${GITHUB_REPOSITORY#*/}-${GITHUB_SHA:0:7}
-    - name: Print repo name
-      run: echo "Repository name is $REPOSITORY_NAME"
-    - name: Login to  DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.MY_DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.MY_DOCKER_HUB_TOKEN }}
-    - name: Push images to registry
-      run: mvn compile com.google.cloud.tools:jib-maven-plugin:2.5.2:build -Dimage=registry.hub.docker.com/rajuankilla20/$REPOSITORY_NAME:$REPOSITORY_NAME-b$BUILD_NUMBER
+ 
 ## It will generate by default, which is similar to Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.rankilla20.springdocker.SpringDockerApplication]      
+    - name: kubectl - Google Cloud GKE cluster.
+      # You may pin to the exact commit or the version.
+      # uses: ameydev/gke-kubectl-action@dbe114f1703050edcbdc4285cab3f859646834d2
+      uses: ameydev/gke-kubectl-action@v1.02
+      with:
+        # GCP authorization credentials
+        APPLICATION_CREDENTIALS: ${{ secrets.G_APPLICATION_CREDENTIALS }}
+        # Project id
+        PROJECT_ID: ${{ secrets.G_PROJECT_ID }}
+        # GKE Cluser Name
+        CLUSTER_NAME: ${{ secrets.G_CLUSTER_NAME }}
+        # Zone Name
+        ZONE_NAME: ${{ secrets.G_ZONE_NAME }}
+    - name: List directories
+      run: ls -ltr
