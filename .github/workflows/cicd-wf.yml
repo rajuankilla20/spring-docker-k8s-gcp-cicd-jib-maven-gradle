@@ -31,4 +31,3 @@ jobs:
         ZONE_NAME: ${{ secrets.G_ZONE_NAME }}
     - name: List directories
       run: ls -ltr
-      
