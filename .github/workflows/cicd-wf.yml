@@ -10,10 +10,6 @@ jobs:
     - uses: actions/checkout@v1
       with:
         ref: master
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
  
 ## It will generate by default, which is similar to Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.rankilla20.springdocker.SpringDockerApplication]      
     - name: kubectl - Google Cloud GKE cluster.
