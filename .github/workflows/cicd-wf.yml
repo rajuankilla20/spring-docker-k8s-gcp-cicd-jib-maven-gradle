@@ -15,7 +15,7 @@ jobs:
         echo ::set-env name=CLUSTER_NAME::${{ secrets.G_CLUSTER_NAME }}
         echo ::set-env name=CLUSTER_ZONE::${{ secrets.G_ZONE_NAME }}
         echo ::set-env name=PROJECT_NAME::${{ secrets.G_PROJECT_ID }}
-        echo ::set-env name=APP_CREDENTIALS:: ${{ secrets.G_APPLICATION_CREDENTIALS }}
+        echo ::set-env name=APP_CREDENTIALS::${{ secrets.G_APPLICATION_CREDENTIALS }}
         
 ## It will generate by default, which is similar to Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.rankilla20.springdocker.SpringDockerApplication]      
     - name: kubectl - Google Cloud GKE cluster.
