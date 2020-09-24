@@ -10,7 +10,13 @@ jobs:
     - uses: actions/checkout@v1
       with:
         ref: master
- 
+    - name: Set Cluster credentials
+      run: |
+        echo ::set-env name=CLUSTER_NAME::${{ secrets.G_CLUSTER_NAME }}
+        echo ::set-env name=CLUSTER_ZONE::${{ secrets.G_ZONE_NAME }}
+        echo ::set-env name=PROJECT_NAME::${{ secrets.G_PROJECT_ID }}
+        echo ::set-env name=APP_CREDENTIALS:: ${{ secrets.G_APPLICATION_CREDENTIALS }}
+        
 ## It will generate by default, which is similar to Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.rankilla20.springdocker.SpringDockerApplication]      
     - name: kubectl - Google Cloud GKE cluster.
       # You may pin to the exact commit or the version.
@@ -18,12 +24,12 @@ jobs:
       uses: ameydev/gke-kubectl-action@v1.02
       with:
         # GCP authorization credentials
-        APPLICATION_CREDENTIALS: ${{ secrets.G_APPLICATION_CREDENTIALS }}
+        APPLICATION_CREDENTIALS: ${{ env.APP_CREDENTIALS }}
         # Project id
-        PROJECT_ID: ${{ secrets.G_PROJECT_ID }}
+        PROJECT_ID: ${{ env.PROJECT_NAME }}
         # GKE Cluser Name
-        CLUSTER_NAME: ${{ secrets.G_CLUSTER_NAME }}
+        CLUSTER_NAME: ${{ env.CLUSTER_NAME }}
         # Zone Name
-        ZONE_NAME: ${{ secrets.G_ZONE_NAME }}
+        ZONE_NAME: ${{ env.CLUSTER_ZONE }}
     - name: List directories
       run: ls -ltr
