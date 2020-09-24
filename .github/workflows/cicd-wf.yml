@@ -20,7 +20,7 @@ jobs:
         # Project id
         PROJECT_ID: ${{ secrets.G_PROJECT_ID }}
         # GKE Cluser Name
-        CLUSTER_NAME: ${{ secrets.G_ZONE_NAME }}
+        CLUSTER_NAME: ${{ secrets.G_CLUSTER_NAME }}
         # Zone Name
         ZONE_NAME: ${{ secrets.G_ZONE_NAME }}
     - name: List directories
